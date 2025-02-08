@@ -1,3 +1,6 @@
+#ifndef HORSE_H
+#define HORSE_H
+
 class Horse {
         private:
                 int position;
@@ -8,4 +11,6 @@ class Horse {
                 void init(int id, int raceLength);
                 void advance();
                 void printLane();
-                bool isWinner()
+                bool isWinner();
+};
+#endif //HORSE_H

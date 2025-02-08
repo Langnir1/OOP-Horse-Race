@@ -1,33 +1,45 @@
 #include <iostream>
 #include <random>
-#include <Horse.h>
+#include "Horse.h"
 #include <cstdlib>
+#include <ctime>
 
-srand(time(NULL));
 
 Horse::Horse(){
-	Horse::position = 0;
-	Horse::id = 0;
-	Horse::raceLength = 15;
+	position = 0;
+	id = 0;
+	raceLength = 15;
+
+	srand(time(NULL));
 }
 
 void Horse::init(int id, int raceLength){
-	Horse::position = 0;
-	Horse::id = id;
-	Horse::raceLength = raceLength;
+	position = 0;
+	id = id;
+	raceLength = raceLength;
 }
 
 void Horse::advance(){
 	int coin = rand() % 2;
-	Horse::position  += coin;
+	position  += coin;
 }
 
 void Horse::printLane(){
-	for(int i = 0; i < Horse::raceLength; i++){
-		if(i == Horse::position){
-			std::cout << Horse::id;
+	for(int i = 0; i < raceLength; i++){
+		if(i == position){
+			std::cout << id;
 		} else{
 			std::cout << ".";
 		}
 	}
+	std::cout << std::endl;
+}
+
+bool Horse::isWinner(){
+	bool result = false;
+	if(position >= raceLength){
+		std::cout << "Congradulations Horse " << id << "!" << std::endl;
+		result = true;
+	}
+	return result;
 }

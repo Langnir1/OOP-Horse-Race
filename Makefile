@@ -1,11 +1,13 @@
-CXX = g++
+horseRace: Horse.o Race.o main.o
+	g++ Horse.o Race.o main.o -o horseRace
 
-SRC = main.cpp Horse.cpp
+Horse.o: Horse.cpp Horse.h
+	g++ -c Horse.cpp
 
-TARGET = my_program
-
-all:
-	$(CXX) $(SRC) -o $(TARGET)
+Race.o: Race.cpp Race.h Horse.h
+	g++ -c Race.cpp
+main.o: main.cpp Horse.h Race.h
+	g++ -c main.cpp
 
 clean:
-	rm -f $(TARGET)
+	rm -f *.o
